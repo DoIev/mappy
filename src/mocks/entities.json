@@ -1,0 +1,14 @@
+[
+  {
+    "name": "הבית של ברכה",
+    "description": "מתקיימת פה פעילות פחעית",
+    "creationTime": "01-01-2001T13:00:00",
+    "relatedEntitiesIds": [],
+    "geography": {
+      "x": 1,
+      "y": 1
+    },
+    "files": [],
+    "scope": "רוסיה"
+  }
+]
