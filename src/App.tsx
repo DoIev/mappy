@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Router } from "../generic/router.component";
+import { Router } from "./generic/router.component";
 
 const App: FC = () => {
   return <Router />;
