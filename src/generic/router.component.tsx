@@ -1,16 +1,27 @@
-import { FC } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import { Route, Routes } from "react-router";
 import { BrowserRouter } from "react-router-dom";
-
-import { HomePage } from "../pages/add/home.page";
-import { AddPage } from "../pages/home/add.page";
+import { IServicesContext, ServicesContext } from "../context/services.context";
 
 export const Router: FC = () => {
+  const { routerService } = useContext<IServicesContext>(ServicesContext);
+
+  const [routesToComponentsMapper, setRoutesToComponentsMapper] = useState<
+    Record<string, any>
+  >({});
+
+  useEffect(() => {
+    const updatedRoutesMapper = routerService.getAllRoutesWithComponents();
+    setRoutesToComponentsMapper(updatedRoutesMapper);
+  }, [routerService]);
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/add" element={<AddPage />} />
+        {Object.entries(routesToComponentsMapper).map((entry, index) => {
+          const Element = entry[1];
+          return <Route key={index} path={entry[0]} element={<Element />} />;
+        })}
       </Routes>
     </BrowserRouter>
   );

@@ -1,5 +1,5 @@
 import { FC } from "react";
 
 export const AddPage: FC = () => {
-  return <>Add</>;
+  return <div>Fuck</div>;
 };
