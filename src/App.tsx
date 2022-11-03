@@ -1,7 +1,8 @@
-import "./App.css";
+import { FC } from "react";
+import { Router } from "../generic/router.component";
 
-function App() {
-  return <div className="App"></div>;
-}
+const App: FC = () => {
+  return <Router />;
+};
 
 export default App;
