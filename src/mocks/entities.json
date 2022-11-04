@@ -10,5 +10,29 @@
     },
     "files": [],
     "scope": "רוסיה"
+  },
+  {
+    "name": "מהההההה יבת זונהההה",
+    "description": "מתקיימת פה פעילות פחעית",
+    "creationTime": "01-01-2001T13:00:00",
+    "relatedEntitiesIds": [],
+    "geography": {
+      "x": 1,
+      "y": 1
+    },
+    "files": [],
+    "scope": "רוסיה"
+  },
+  {
+    "name": "הבית של דולב הגבר",
+    "description": "מתקיימת פה פעילות פחעית",
+    "creationTime": "01-01-2001T13:00:00",
+    "relatedEntitiesIds": [],
+    "geography": {
+      "x": 1,
+      "y": 1
+    },
+    "files": [],
+    "scope": "רוסיה"
   }
 ]
