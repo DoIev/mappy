@@ -1,38 +1,98 @@
 [
   {
-    "name": "הבית של ברכה",
-    "description": "מתקיימת פה פעילות פחעית",
-    "creationTime": "01-01-2001T13:00:00",
-    "relatedEntitiesIds": [],
-    "geography": {
-      "x": 1,
-      "y": 1.4
-    },
-    "files": [],
-    "scope": "רוסיה"
+    "fields": {
+      "name": {
+        "displayName": "שם",
+        "value": "הבית של ברכה",
+        "type": "String"
+      },
+      "description": {
+        "displayName": "תיאור",
+        "value": "מתקיימת פה פעילות פחעית",
+        "type": "String"
+      },
+      "geography": {
+        "displayName": "גיאוגרפיה",
+        "type": "Geography",
+        "value": "POINT(1 1)"
+      },
+      "scope": {
+        "displayName": "איזור",
+        "type": "string",
+        "value": "רוסיה"
+      }
+    }
   },
   {
-    "name": "מהההההה יבת זונהההה",
-    "description": "מתקיימת פה פעילות פחעית",
-    "creationTime": "01-01-2001T13:00:00",
-    "relatedEntitiesIds": [],
-    "geography": {
-      "x": 1.1,
-      "y": 1.2
-    },
-    "files": [],
-    "scope": "רוסיה"
+    "fields": {
+      "name": {
+        "displayName": "שם",
+        "value": "הבית של ברכה",
+        "type": "String"
+      },
+      "description": {
+        "displayName": "תיאור",
+        "value": "מתקיימת פה פעילות פחעית",
+        "type": "String"
+      },
+      "geography": {
+        "displayName": "גיאוגרפיה",
+        "type": "Geography",
+        "value": "POINT(1 1)"
+      },
+      "scope": {
+        "displayName": "איזור",
+        "type": "string",
+        "value": "רוסיה"
+      }
+    }
   },
   {
-    "name": "הבית של דולב הגבר",
-    "description": "מתקיימת פה פעילות פחעית",
-    "creationTime": "01-01-2001T13:00:00",
-    "relatedEntitiesIds": [],
-    "geography": {
-      "x": 1.01,
-      "y": 2.03
-    },
-    "files": [],
-    "scope": "רוסיה"
+    "fields": {
+      "name": {
+        "displayName": "שם",
+        "value": "הבית של ברכה",
+        "type": "String"
+      },
+      "description": {
+        "displayName": "תיאור",
+        "value": "מתקיימת פה פעילות פחעית",
+        "type": "String"
+      },
+      "geography": {
+        "displayName": "גיאוגרפיה",
+        "type": "Geography",
+        "value": "POINT(1 1)"
+      },
+      "scope": {
+        "displayName": "איזור",
+        "type": "string",
+        "value": "רוסיה"
+      }
+    }
+  },
+  {
+    "fields": {
+      "name": {
+        "displayName": "שם",
+        "value": "הבית של ברכה",
+        "type": "String"
+      },
+      "description": {
+        "displayName": "תיאור",
+        "value": "מתקיימת פה פעילות פחעית",
+        "type": "String"
+      },
+      "geography": {
+        "displayName": "גיאוגרפיה",
+        "type": "Geography",
+        "value": "POINT(1 1)"
+      },
+      "scope": {
+        "displayName": "איזור",
+        "type": "string",
+        "value": "רוסיה"
+      }
+    }
   }
 ]
