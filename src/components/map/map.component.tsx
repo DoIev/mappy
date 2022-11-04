@@ -3,7 +3,7 @@ import { FC } from "react";
 import "leaflet/dist/leaflet.css";
 import "./map.css";
 
-import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 export const Map: FC = () => {
   return (
