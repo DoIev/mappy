@@ -1,0 +1,17 @@
+.button {
+  font-family: "galacti_condensed_ffcregular";
+  font-size: 2em;
+  padding: 15px 30px;
+  font-weight: 900;
+  color: #fff;
+  background-color: #f50057;
+  border: 2px solid #f50057;
+  cursor: pointer;
+  width: max-content;
+  transition: 0.25s ease;
+}
+
+.button:hover {
+  color: #f50057;
+  background-color: transparent;
+}

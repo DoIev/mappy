@@ -1,18 +1,20 @@
 import { FC } from "react";
 
-import { LayerGroup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+
+import { MarkerClusterLayer } from "./layers/markercluster/markercluster.component";
+import { IEntity } from "../../models/entity.model";
 
 import "leaflet/dist/leaflet.css";
 import "./map.css";
-
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { IEntity } from "../../models/entity.model";
+import { MinimapControl } from "./controls/minimap.component";
 
 export interface IMapProps {
   entities: IEntity[];
+  onEntityClick?: (event: any) => void;
 }
 
-export const Map: FC<IMapProps> = ({ entities }) => {
+export const Map: FC<IMapProps> = ({ entities, onEntityClick }) => {
   return (
     <MapContainer
       center={[51.505, -0.09]}
@@ -20,22 +22,24 @@ export const Map: FC<IMapProps> = ({ entities }) => {
       scrollWheelZoom={true}
       attributionControl={false}
     >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <LayerGroup>
+      <MinimapControl />
+      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+
+      <MarkerClusterLayer>
         {entities.map((entity: IEntity, index: number) => (
           <Marker
             key={index}
             position={[entity.geography.x, entity.geography.y]}
+            eventHandlers={{
+              click: onEntityClick,
+            }}
           >
             <Popup>
               A pretty CSS3 popup. <br /> Easily customizable.
             </Popup>
           </Marker>
         ))}
-      </LayerGroup>
+      </MarkerClusterLayer>
     </MapContainer>
   );
 };

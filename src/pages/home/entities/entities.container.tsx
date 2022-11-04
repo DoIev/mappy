@@ -1,7 +1,9 @@
 import { FC, useContext, useEffect } from "react";
 
-import { EntityCard } from "../../../components/entity/entity.component";
 import { DomainContext, IDomainContext } from "../../../context/domain.context";
+import { EntityCard } from "../../../components/entity/entity.component";
+import { AddEntityButton } from "./addEntity.component";
+
 import "./entities.css";
 
 export const EntitiesContainer: FC = () => {
@@ -16,6 +18,7 @@ export const EntitiesContainer: FC = () => {
       {entities.map((mock: any, index: number) => (
         <EntityCard key={index} {...mock} />
       ))}
+      <AddEntityButton />
     </div>
   );
 };

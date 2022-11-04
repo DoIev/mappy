@@ -9,18 +9,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@types/leaflet": "^1.9.0",
-    "@types/react-leaflet": "^2.8.2",
-    "@types/react-router-dom": "^5.3.3",
     "leaflet": "^1.9.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-leaflet": "^4.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-leaflet": "^3.2.1",
+    "react-leaflet-markercluster": "^3.0.0-rc1",
     "react-router-dom": "^6.4.3"
   },
   "devDependencies": {
-    "@types/react": "^18.0.22",
+    "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.7",
+    "@types/leaflet": "^1.9.0",
+    "@types/react-leaflet": "^2.8.2",
+    "@types/react-leaflet-markercluster": "^3.0.0",
+    "@types/react-router-dom": "^5.3.3",
     "@vitejs/plugin-react": "^2.2.0",
     "typescript": "^4.6.4",
     "vite": "^3.2.0"

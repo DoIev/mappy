@@ -13,7 +13,10 @@ export const MapContainer: FC = () => {
 
   return (
     <div className="map-container">
-      <Map entities={entities as IEntity[]} />
+      <Map
+        entities={entities as IEntity[]}
+        onEntityClick={() => console.log("click")}
+      />
     </div>
   );
 };
