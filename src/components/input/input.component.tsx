@@ -7,6 +7,9 @@ export interface IInputProps {
   placeHolder?: string;
   disabled?: boolean;
   className?: string;
+  onClick?: () => void;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
 
 export const Input: FC<IInputProps> = ({
@@ -15,11 +18,17 @@ export const Input: FC<IInputProps> = ({
   className,
   disabled = false,
   text,
+  onClick,
+  onFocus,
+  onBlur,
 }) => {
   return (
     <>
       <label className="input-label">{text}</label>
       <input
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onClick={onClick}
         className={`${className ?? ""} input`}
         type={type}
         placeholder={placeHolder}

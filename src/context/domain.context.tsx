@@ -4,6 +4,7 @@ import {
   useContext,
   useReducer,
   useCallback,
+  useState,
 } from "react";
 import {
   ActionType as EntitiesActionType,
@@ -23,6 +24,8 @@ export interface IDomainContext {
   focusedEntityId: string;
   setFocusedEntityId: (entityId: string, initator: string) => void;
   focusInitiator: string;
+  isMapDrawable: boolean;
+  setIsMapDrawable: (isMapDrawable: boolean) => void;
 }
 
 export const DomainContext: Context<IDomainContext> =
@@ -33,6 +36,8 @@ export const DomainContext: Context<IDomainContext> =
     setFocusedEntityId: () => {},
     focusedEntityId: "",
     focusInitiator: "",
+    isMapDrawable: false,
+    setIsMapDrawable: () => {},
   });
 
 export const DomainContextProvider = ({ children }: any) => {
@@ -70,6 +75,8 @@ export const DomainContextProvider = ({ children }: any) => {
     });
   }, [entitiesService]);
 
+  const [isMapDrawable, setIsMapDrawable] = useState<boolean>(false);
+
   return (
     <DomainContext.Provider
       value={{
@@ -79,6 +86,8 @@ export const DomainContextProvider = ({ children }: any) => {
         focusedEntityId,
         setFocusedEntityId,
         focusInitiator,
+        isMapDrawable,
+        setIsMapDrawable,
       }}
       children={children}
     ></DomainContext.Provider>

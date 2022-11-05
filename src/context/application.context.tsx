@@ -30,7 +30,6 @@ export const ApplicationContextProvider = ({ children }: any) => {
   };
 
   const renderContentByMode = () => {
-    console.log("called");
     switch (currentMode) {
       case ApplicationMode.Add:
         return <AddContainer />;

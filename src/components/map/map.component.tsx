@@ -2,15 +2,18 @@ import { FC } from "react";
 import {
   MapContainer,
   TileLayer,
-  Marker,
   Popup,
   GeoJSON as GeoJSONFeature,
+  ScaleControl,
 } from "react-leaflet";
+
 import { MarkerClusterLayer } from "./layers/markercluster/markercluster.component";
 import { MinimapControl } from "./controls/minimap.component";
+import { MapRecenterer } from "./helpers/recenterer.component";
+
 import "leaflet/dist/leaflet.css";
 import "./map.css";
-import { MapRecenterer } from "./helpers/recenterer.component";
+import { DrawControl } from "./controls/draw.control";
 
 export interface IMapProps {
   geoJSONS: GeoJSON.GeoJsonObject[];
@@ -26,6 +29,8 @@ export const Map: FC<IMapProps> = ({ geoJSONS, onVectorClick }) => {
       attributionControl={false}
     >
       <MinimapControl />
+      <DrawControl />
+      <ScaleControl metric />
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
       <MarkerClusterLayer>

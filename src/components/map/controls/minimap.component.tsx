@@ -7,13 +7,7 @@ import {
   useMapEvent,
 } from "react-leaflet";
 import { useEventHandlers } from "@react-leaflet/core";
-
-const POSITION_CLASSES: Record<string, string> = {
-  bottomleft: "leaflet-bottom leaflet-left",
-  bottomright: "leaflet-bottom leaflet-right",
-  topleft: "leaflet-top leaflet-left",
-  topright: "leaflet-top leaflet-right",
-};
+import { POSITION_CLASSES } from "../map.consts";
 
 const BOUNDS_STYLE = { weight: 1 };
 
@@ -67,7 +61,7 @@ export const MinimapControl = ({ position, zoom }: any) => {
   );
 
   const positionClass =
-    (position && POSITION_CLASSES[position]) || POSITION_CLASSES.topright;
+    (position && POSITION_CLASSES[position]) || POSITION_CLASSES.bottomright;
   return (
     <div className={positionClass}>
       <div className="leaflet-control leaflet-bar">{minimap}</div>
