@@ -1,35 +1,32 @@
 import { Context, createContext, useMemo } from "react";
-import { RouterService } from "../services/router/router.service";
 
-import { APPLICATION_ROUTES_MAPPER } from "../consts/router.consts";
 import { EntitiesService } from "../services/entities/entities.service";
 import {
   GeographyParser,
   IGeographyParser,
-} from "../services/entities/geography.parser";
+} from "../services/geography/geography.parser";
 import { EntitiesParser } from "../services/entities/entities.parser";
+import {
+  GeographyService,
+  IGeographyService,
+} from "../services/geography/geography.service";
 
 export interface IServicesContext {
-  routerService: RouterService;
   entitiesService: EntitiesService;
   geographyParser: IGeographyParser;
   entitiesParser: EntitiesParser;
+  geographyService: IGeographyService;
 }
 
 export const ServicesContext: Context<IServicesContext> =
   createContext<IServicesContext>({
-    routerService: {} as RouterService,
     entitiesService: {} as EntitiesService,
     geographyParser: {} as IGeographyParser,
     entitiesParser: {} as EntitiesParser,
+    geographyService: {} as GeographyService,
   });
 
 export const ServicesContextProvider = ({ children }: any) => {
-  const routerService = useMemo(
-    () => new RouterService(APPLICATION_ROUTES_MAPPER),
-    [APPLICATION_ROUTES_MAPPER]
-  );
-
   const entitiesService = useMemo(() => new EntitiesService(), []);
 
   const geographyParser = useMemo<IGeographyParser>(
@@ -42,13 +39,15 @@ export const ServicesContextProvider = ({ children }: any) => {
     [geographyParser]
   );
 
+  const geographyService = useMemo(() => new GeographyService(), []);
+
   return (
     <ServicesContext.Provider
       value={{
-        routerService,
         entitiesService,
         entitiesParser,
         geographyParser,
+        geographyService,
       }}
       children={children}
     ></ServicesContext.Provider>

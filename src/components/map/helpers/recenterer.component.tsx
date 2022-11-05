@@ -11,7 +11,8 @@ export const MapRecenterer = () => {
   const map = useMap();
   const { focusedEntityId, entities } =
     useContext<IDomainContext>(DomainContext);
-  const { entitiesParser, geographyParser } =
+
+  const { entitiesParser, geographyService } =
     useContext<IServicesContext>(ServicesContext);
 
   useEffect(() => {
@@ -20,8 +21,9 @@ export const MapRecenterer = () => {
       (entity: IEntity) => entity.id === focusedEntityId
     );
     const geoJSON = entitiesParser.parseEntityToGeoJSON(entity);
-    const { geometry } = geographyParser.getCenterOfMass(geoJSON);
+    const { geometry } = geographyService.getCenterOfMass(geoJSON);
     map.flyTo(geometry.coordinates);
   }, [focusedEntityId]);
+
   return null;
 };

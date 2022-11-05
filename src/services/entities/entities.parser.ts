@@ -1,4 +1,4 @@
-import { IGeographyParser } from "./geography.parser";
+import { IGeographyParser } from "../geography/geography.parser";
 import { IEntity, IFieldType } from "../../models/entity.model";
 
 export class EntitiesParser {

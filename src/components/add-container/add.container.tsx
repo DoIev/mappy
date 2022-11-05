@@ -1,7 +1,7 @@
-import { FC, useContext, useEffect } from "react";
-import { Input } from "../../../components/input/input.component";
+import { FC, useContext } from "react";
+import { Input } from "../input/input.component";
 
-import { DomainContext, IDomainContext } from "../../../context/domain.context";
+import { DomainContext, IDomainContext } from "../../context/domain.context";
 
 import "./add.css";
 

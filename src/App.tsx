@@ -1,12 +1,22 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
+import { MapContainer } from "./components/map/map.container";
 import { Navbar } from "./components/navbar/navbar.component";
-import { Router } from "./generic/router.component";
+import {
+  ApplicationContext,
+  IApplicationContext,
+} from "./context/application.context";
 
 const App: FC = () => {
+  const { renderContentByMode } =
+    useContext<IApplicationContext>(ApplicationContext);
+
+  const content = renderContentByMode();
+
   return (
     <>
-      <Router />
-      <Navbar />;
+      <Navbar />
+      {content}
+      <MapContainer />
     </>
   );
 };
