@@ -8,11 +8,23 @@ export interface ICardProps {
   files?: [];
   fieldsAndValues?: { displayName: string; value: any }[];
   onClick?: () => void;
+  reference?: any;
 }
 
-export const Card: FC<ICardProps> = ({ header, info, fieldsAndValues }) => {
+export const Card: FC<ICardProps> = ({
+  header,
+  info,
+  fieldsAndValues,
+  onClick,
+  reference,
+}) => {
   return (
-    <div className="card-wrapper">
+    <div
+      className="card-wrapper"
+      onClick={onClick}
+      ref={reference}
+      tabIndex={0}
+    >
       <div className="card-header">{header}</div>
       <div className="card-info">{info}</div>
       {fieldsAndValues &&

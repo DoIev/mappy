@@ -4,7 +4,7 @@ import { IEntity, IFieldType } from "../../models/entity.model";
 export class EntitiesParser {
   constructor(private readonly geographyParser: IGeographyParser) {}
 
-  private parseEntityToGeoJSON(entity: IEntity): GeoJSON.Feature {
+  public parseEntityToGeoJSON(entity: IEntity): GeoJSON.Feature {
     const geographyFieldId = Object.keys(entity.fields).find(
       (fieldId: string) => entity.fields[fieldId].type === IFieldType.Geography
     );
@@ -15,7 +15,7 @@ export class EntitiesParser {
       ...this.geographyParser.parseTextToGeometry(
         entity.fields[geographyFieldId].value
       ),
-      properties: entity.fields,
+      properties: { ...entity.fields, entityId: entity.id },
     };
   }
 

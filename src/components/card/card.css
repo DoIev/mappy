@@ -17,6 +17,10 @@
   transform: translateY(-5px);
 }
 
+.card-wrapper:focus {
+  border: 1px solid #f50057;
+}
+
 .card-header {
   width: 100%;
   display: block;

@@ -5,7 +5,14 @@ import {
   useReducer,
   useCallback,
 } from "react";
-import { ActionType, entitiesReducer } from "../reducers/entities.reducer";
+import {
+  ActionType as EntitiesActionType,
+  entitiesReducer,
+} from "../reducers/entities.reducer";
+import {
+  ActionType as FocusActionType,
+  focusReducer,
+} from "../reducers/focus.reducer";
 
 import { IServicesContext, ServicesContext } from "./services.context";
 
@@ -13,6 +20,9 @@ export interface IDomainContext {
   entities: any[];
   isLoadingEntities: boolean;
   loadEntities: () => void;
+  focusedEntityId: string;
+  setFocusedEntityId: (entityId: string, initator: string) => void;
+  focusInitiator: string;
 }
 
 export const DomainContext: Context<IDomainContext> =
@@ -20,10 +30,13 @@ export const DomainContext: Context<IDomainContext> =
     entities: [],
     isLoadingEntities: false,
     loadEntities: () => {},
+    setFocusedEntityId: () => {},
+    focusedEntityId: "",
+    focusInitiator: "",
   });
 
 export const DomainContextProvider = ({ children }: any) => {
-  const [{ entities, isLoadingEntities }, dispatch] = useReducer(
+  const [{ entities, isLoadingEntities }, dispatchEntities] = useReducer(
     entitiesReducer,
     {
       entities: [],
@@ -31,17 +44,42 @@ export const DomainContextProvider = ({ children }: any) => {
     }
   );
 
+  const [{ focusedEntityId, focusInitiator }, dispatchFocus] = useReducer(
+    focusReducer,
+    {
+      focusedEntityId: "",
+      focusInitiator: "",
+    }
+  );
+
+  const setFocusedEntityId = (entityId: string, initiator: string) => {
+    dispatchFocus({
+      type: FocusActionType.FOCUS_ENTITY,
+      payload: { entityId, initiator },
+    });
+  };
+
   const { entitiesService } = useContext<IServicesContext>(ServicesContext);
 
   const loadEntities = useCallback(() => {
-    dispatch({ type: ActionType.LOADING_ENTITIES });
+    dispatchEntities({ type: EntitiesActionType.LOADING_ENTITIES });
     const fetchedEntities = entitiesService.getAllEntities();
-    dispatch({ type: ActionType.LOADED_ENTITIES, payload: fetchedEntities });
+    dispatchEntities({
+      type: EntitiesActionType.LOADED_ENTITIES,
+      payload: fetchedEntities,
+    });
   }, [entitiesService]);
 
   return (
     <DomainContext.Provider
-      value={{ entities, loadEntities, isLoadingEntities }}
+      value={{
+        entities,
+        loadEntities,
+        isLoadingEntities,
+        focusedEntityId,
+        setFocusedEntityId,
+        focusInitiator,
+      }}
       children={children}
     ></DomainContext.Provider>
   );

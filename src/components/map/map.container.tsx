@@ -5,13 +5,13 @@ import {
   IServicesContext,
   ServicesContext,
 } from "../../context/services.context";
-import { IEntity } from "../../models/entity.model";
 import { Map } from "./map.component";
 
 import "./map.css";
 
 export const MapContainer: FC = () => {
-  const { entities } = useContext<IDomainContext>(DomainContext);
+  const { entities, setFocusedEntityId } =
+    useContext<IDomainContext>(DomainContext);
   const { entitiesParser } = useContext<IServicesContext>(ServicesContext);
   const [geoJsons, setGeoJSONs] = useState<GeoJSON.Feature[]>([]);
 
@@ -22,9 +22,14 @@ export const MapContainer: FC = () => {
     }
   }, [entities]);
 
+  const OnEntityClick = (event: any) => {
+    const entityId = event.layer.feature.geometry.properties.entityId;
+    setFocusedEntityId(entityId, "Map");
+  };
+
   return (
     <div className="map-container">
-      <Map geoJSONS={geoJsons} onVectorClick={() => console.log("click")} />
+      <Map geoJSONS={geoJsons} onVectorClick={OnEntityClick} />
     </div>
   );
 };

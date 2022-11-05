@@ -1,5 +1,6 @@
 [
   {
+    "id": "1",
     "fields": {
       "name": {
         "displayName": "שם",
@@ -24,6 +25,7 @@
     }
   },
   {
+    "id": "2",
     "fields": {
       "name": {
         "displayName": "שם",
@@ -48,6 +50,7 @@
     }
   },
   {
+    "id": "3",
     "fields": {
       "name": {
         "displayName": "שם",
@@ -72,6 +75,7 @@
     }
   },
   {
+    "id": "4",
     "fields": {
       "name": {
         "displayName": "שם",

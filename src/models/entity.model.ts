@@ -3,6 +3,7 @@ import { IGeography } from "./geography.model";
 export interface IEntity {
   fields: { [fieldId: string]: IField };
   metadata?: IMetadata;
+  id: string;
 }
 
 export interface IField {

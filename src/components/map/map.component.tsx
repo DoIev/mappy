@@ -10,6 +10,7 @@ import { MarkerClusterLayer } from "./layers/markercluster/markercluster.compone
 import { MinimapControl } from "./controls/minimap.component";
 import "leaflet/dist/leaflet.css";
 import "./map.css";
+import { MapRecenterer } from "./helpers/recenterer.component";
 
 export interface IMapProps {
   geoJSONS: GeoJSON.GeoJsonObject[];
@@ -40,6 +41,7 @@ export const Map: FC<IMapProps> = ({ geoJSONS, onVectorClick }) => {
           </GeoJSONFeature>
         ))}
       </MarkerClusterLayer>
+      <MapRecenterer />
     </MapContainer>
   );
 };
