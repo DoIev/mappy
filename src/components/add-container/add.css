@@ -1,15 +1,16 @@
 .add-container {
+  float: right;
   display: flex;
   align-items: center;
   flex-direction: column;
   height: 100%;
   width: 30%;
-  background-color: rgb(248, 248, 248);
+  background-color: var(--background-secondary);
 }
 
-.add-entity {
+.add-entity-button {
   margin-top: 5vh;
+  bottom: 1rem;
   position: sticky;
   align-self: center;
-  bottom: 1rem;
 }

@@ -1,62 +1,42 @@
-import { Context, createContext, ReactElement, useState } from "react";
-import { AddContainer } from "../components/add-container/add.container";
-import { EntitiesContainer } from "../components/entities/entities.container";
-import { MapContainer } from "../components/map/map.container";
+import { Context, createContext, useEffect, useState } from "react";
 
-export enum ApplicationMode {
-  View,
-  Add,
+export enum Theme {
+  Dark = "dark",
+  Light = "light",
 }
 
+export const THEMES = [Theme.Light, Theme.Dark];
+
 export interface IApplicationContext {
-  currentMode: ApplicationMode;
-  switchMode: (mode: ApplicationMode) => void;
-  renderContentByMode: () => HTMLElement | ReactElement;
+  toggleTheme: () => void;
+  currentTheme: Theme;
 }
 
 export const ApplicationContext: Context<IApplicationContext> =
   createContext<IApplicationContext>({
-    currentMode: ApplicationMode.View,
-    switchMode: () => {},
-    renderContentByMode: () => <></>,
+    toggleTheme: () => {},
+    currentTheme: Theme.Light,
   });
 
 export const ApplicationContextProvider = ({ children }: any) => {
-  const [currentMode, setCurrentMode] = useState<ApplicationMode>(
-    ApplicationMode.View
-  );
+  const [currentThemeIndex, setCurrentThemeIndex] = useState<number>(0);
 
-  const switchMode = (mode: ApplicationMode) => {
-    setCurrentMode(mode);
+  const toggleTheme = () => {
+    const nextThemeIndex = (currentThemeIndex + 1) % THEMES.length;
+    setCurrentThemeIndex(nextThemeIndex);
   };
 
-  const renderContentByMode = () => {
-    switch (currentMode) {
-      case ApplicationMode.Add:
-        return (
-          <>
-            <MapContainer />
-            <AddContainer />;
-          </>
-        );
-      case ApplicationMode.View:
-        return (
-          <>
-            <MapContainer />
-            <EntitiesContainer />;
-          </>
-        );
-      default:
-        return <></>;
-    }
-  };
+  useEffect(() => {
+    document
+      .getElementById("root")
+      ?.setAttribute("data-theme", THEMES[currentThemeIndex]);
+  }, [currentThemeIndex]);
 
   return (
     <ApplicationContext.Provider
       value={{
-        currentMode,
-        switchMode,
-        renderContentByMode,
+        toggleTheme,
+        currentTheme: THEMES[currentThemeIndex],
       }}
       children={children}
     ></ApplicationContext.Provider>

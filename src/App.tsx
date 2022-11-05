@@ -1,14 +1,9 @@
 import { FC, useContext } from "react";
-import { MapContainer } from "./components/map/map.container";
 import { Navbar } from "./components/navbar/navbar.component";
-import {
-  ApplicationContext,
-  IApplicationContext,
-} from "./context/application.context";
+import { MappyContext, IMappyContext } from "./context/mappy.context";
 
 const App: FC = () => {
-  const { renderContentByMode } =
-    useContext<IApplicationContext>(ApplicationContext);
+  const { renderContentByMode } = useContext<IMappyContext>(MappyContext);
 
   const content = renderContentByMode();
 

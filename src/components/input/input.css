@@ -5,25 +5,33 @@ input {
 }
 
 .input {
-  background-color: transparent;
-  border: 2px solid lightgrey;
-  border-radius: 10px;
-  color: black;
   width: max-content;
   height: 30px;
+  border-radius: 10px;
   transition: 200ms linear;
   padding-right: 10px;
 }
 
-.input:hover {
+.input[data-theme="light"] {
+  background-color: transparent;
+  border: 2px solid lightgrey;
+  color: black;
+}
+
+.input[data-theme="dark"] {
+  background-color: #697177;
+  color: var(--text-primary);
+}
+
+.input[data-theme="light"]:hover {
   border-color: grey;
 }
 
-.input:focus {
+.input[data-theme="light"]:focus {
   border-color: black;
   transform: translateY(-3px);
 }
 
 .input-label {
-  color: black;
+  color: var(--text-primary);
 }

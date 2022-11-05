@@ -15,6 +15,22 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --background: white;
+  --background-secondary: rgb(248, 248, 248);
+  --text-primary: black;
+  --text-button: white;
+  --text-secondary: grey;
+  --accent: #f50057;
+}
+
+[data-theme="dark"] {
+  --background: #242424;
+  --background-secondary: black;
+  --text-primary: white;
+  --text-button: white;
+  --text-secondary: var(--text-secondary);
+  --acent: var(--accent);
 }
 
 html,
