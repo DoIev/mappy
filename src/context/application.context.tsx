@@ -1,9 +1,10 @@
 import { Context, createContext, ReactElement, useState } from "react";
 import { AddContainer } from "../components/add-container/add.container";
 import { EntitiesContainer } from "../components/entities/entities.container";
+import { MapContainer } from "../components/map/map.container";
 
 export enum ApplicationMode {
-  Main,
+  View,
   Add,
 }
 
@@ -15,14 +16,14 @@ export interface IApplicationContext {
 
 export const ApplicationContext: Context<IApplicationContext> =
   createContext<IApplicationContext>({
-    currentMode: ApplicationMode.Main,
+    currentMode: ApplicationMode.View,
     switchMode: () => {},
     renderContentByMode: () => <></>,
   });
 
 export const ApplicationContextProvider = ({ children }: any) => {
   const [currentMode, setCurrentMode] = useState<ApplicationMode>(
-    ApplicationMode.Main
+    ApplicationMode.View
   );
 
   const switchMode = (mode: ApplicationMode) => {
@@ -32,9 +33,19 @@ export const ApplicationContextProvider = ({ children }: any) => {
   const renderContentByMode = () => {
     switch (currentMode) {
       case ApplicationMode.Add:
-        return <AddContainer />;
-      case ApplicationMode.Main:
-        return <EntitiesContainer />;
+        return (
+          <>
+            <MapContainer />
+            <AddContainer />;
+          </>
+        );
+      case ApplicationMode.View:
+        return (
+          <>
+            <MapContainer />
+            <EntitiesContainer />;
+          </>
+        );
       default:
         return <></>;
     }

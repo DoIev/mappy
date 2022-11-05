@@ -1,4 +1,5 @@
-import { FC } from "react";
+import { FC, useState } from "react";
+import { Button } from "../button/button.component";
 
 import "./card.css";
 
@@ -18,6 +19,8 @@ export const Card: FC<ICardProps> = ({
   onClick,
   reference,
 }) => {
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+
   return (
     <div
       className="card-wrapper"
@@ -25,15 +28,18 @@ export const Card: FC<ICardProps> = ({
       ref={reference}
       tabIndex={0}
     >
-      <div className="card-header">{header}</div>
-      <div className="card-info">{info}</div>
-      {fieldsAndValues &&
-        fieldsAndValues.map((fieldAndValue, index: number) => (
-          <div key={index} className="card-field-value-pair">
-            <div className="card-field">{fieldAndValue.displayName}</div>
-            <div className="card-value">{fieldAndValue.value}</div>
-          </div>
-        ))}
+      <div className="card">
+        <div className="card-header">{header}</div>
+        <div className="card-info">{info}</div>
+        <div className="expand-button">הרחב</div>
+        {fieldsAndValues &&
+          fieldsAndValues.map((fieldAndValue, index: number) => (
+            <div key={index} className="card-field-value-pair">
+              <div className="card-field">{fieldAndValue.displayName}</div>
+              <div className="card-value">{fieldAndValue.value}</div>
+            </div>
+          ))}
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { FC, useContext, useEffect } from "react";
 
 import { DomainContext, IDomainContext } from "../../context/domain.context";
 import { EntityCard } from "../entity/entity.component";
-import { AddEntityButton } from "./addEntity.component";
+import { AddEntityButton } from "../add-container/addEntity.component";
 
 import "./entities.css";
 

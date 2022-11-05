@@ -16,7 +16,6 @@ const App: FC = () => {
     <>
       <Navbar />
       {content}
-      <MapContainer />
     </>
   );
 };

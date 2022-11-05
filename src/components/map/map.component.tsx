@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -20,7 +20,7 @@ export interface IMapProps {
   onVectorClick?: (event: any) => void;
 }
 
-export const Map: FC<IMapProps> = ({ geoJSONS, onVectorClick }) => {
+export const Map: FC<IMapProps> = memo(({ geoJSONS, onVectorClick }: any) => {
   return (
     <MapContainer
       center={[51.505, -0.09]}
@@ -49,4 +49,4 @@ export const Map: FC<IMapProps> = ({ geoJSONS, onVectorClick }) => {
       <MapRecenterer />
     </MapContainer>
   );
-};
+});
